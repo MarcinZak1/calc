@@ -114,25 +114,27 @@ namespace calc
 
         private void btnClearLine_Click(object sender, EventArgs e)
         {
-            tbWynik.Clear();                                // czyszczenie
+            tbWynik.Clear();                                // czyszczenie całej linijki
             btnClearOne.Enabled = true;                     // odblokowanie pojedynczego kasowania
         }
 
         private void btnClearConsol_Click(object sender, EventArgs e)
         {
-            tbWynik.Clear();
+            tbWynik.Clear();                                // czyszczenie wszystkiego
             result = 0;
             number = 0;
             dzialanie = "";
             lblDzialania.Text = "";
-            flagaCzyszczenie = 1;
             btnClearOne.Enabled = true;                     // odblokowanie pojedynczego kasowania
         }
 
         private void btnClearOne_Click(object sender, EventArgs e)
         {
-            string returner = tbWynik.Text.Remove(tbWynik.Text.Length - 1, 1);
-            tbWynik.Text = returner;
+            if (tbWynik.Text.Length > 0)
+            {
+                string returner = tbWynik.Text.Remove(tbWynik.Text.Length - 1, 1);      //usuwanie ostaniego znaku
+                tbWynik.Text = returner;
+            }
         }
     }
 }
